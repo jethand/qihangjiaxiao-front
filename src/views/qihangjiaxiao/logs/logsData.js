@@ -72,6 +72,25 @@ export default function(){
             }
         ],
         logsData: [],
-        logsOriginData: []
+        logsOriginData: [],
+        logsTotalColumns: [
+            {
+                title: '科目二练车人数总计',
+                key: 'lsk2_number'
+            },
+            {
+                title: '科目三练车人数总计',
+                key: 'lsk3_number'
+            },
+            {
+                title: '科目二练车时间总计',
+                key: 'lsk2_hours'
+            },
+            {
+                title: '科目三练车时间总计',
+                key: 'lsk3_hours'
+            }
+        ],
+        logsTotaldData: []
     }
 }

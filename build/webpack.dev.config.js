@@ -29,8 +29,9 @@ module.exports = merge(webpackBaseConfig, {
             minChunks: Infinity
         }),
         new HtmlWebpackPlugin({
-            title: 'iView admin v' + package.version,
+            title: '启航驾校可视化管理系统',
             filename: '../index.html',
+            favicon: '../td_icon.ico',
             inject: false
         }),
         new CopyWebpackPlugin([
@@ -49,7 +50,8 @@ module.exports = merge(webpackBaseConfig, {
     devServer: {
         proxy: {
           '/v1': {
-            target: 'http://localhost:8360',
+            //target: 'http://localhost:8360',
+            target: 'http://112.74.189.230:8088',
             secure: false
           }
         }

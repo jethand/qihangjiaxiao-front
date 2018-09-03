@@ -197,6 +197,12 @@ export default {
                     this.fetchTickerNumbers();
                     this.hoursTotal = 0;
                     this.$Message.success("打印成功！");
+                }else{
+                    this.$Notice.error({
+                        title: '警告消息提示',
+                        desc: '打印的信息有误，请查询日志核对数据',
+                        duration: 0
+                    });
                 }
             });
         },

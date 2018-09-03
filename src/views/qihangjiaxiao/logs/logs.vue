@@ -17,6 +17,10 @@
                 日志统计：
             </Alert>
             <Table :columns="logsCompotedColumns" :data="logsComputedData" :loading="loading"></Table>
+            <Alert class="margin-top-20">
+                数据统计：
+            </Alert>
+            <Table :columns="logsTotalColumns" :data="logsTotaldData" :loading="loading"></Table>
         </Card>
     </div>
 </template>
@@ -74,6 +78,7 @@ export default {
                 return item.school_name
             });
             let polumerData = [];
+            let logsTotaldData = [];
             groupByDatas && groupByDatas.forEach((oneGroup, index) => {
                 let lsk2_stu_number = 0,
                     lsk3_stu_number = 0,
@@ -97,6 +102,17 @@ export default {
                     lsk3_hours: Lsk3_hours
                 });
             });
+            let [lsk2_number, lsk3_number, lsk2_hours, lsk3_hours] = [0,0,0,0];
+            polumerData.forEach(item => {
+                lsk2_number += item.lsk2_number;
+                lsk3_number += item.lsk3_number;
+                lsk2_hours += item.lsk2_hours;
+                lsk3_hours += item.lsk3_hours;
+            });
+            logsTotaldData.push({
+                lsk2_number, lsk3_number, lsk2_hours, lsk3_hours
+            });
+            this.logsTotaldData = logsTotaldData;
             this.logsComputedData = polumerData;
         }
     },

@@ -14,12 +14,14 @@ import "@/styles/component.less"
 import axios from 'axios'
 Vue.prototype.$http = axios;
 axios.interceptors.response.use(config => {
-    if(config.data.errno !== 0){
+    if(config.data.errno === -1){
         iView.Message.warning("用户未登录！");
         const URL = window.location.protocol + '//' + window.location.host + '/#/login';
         window.location.href = URL;
     }
     return config
+}, error => {
+    iView.Message.error("数据交互出现错误！！！");
 });
 import filter from '@/filter'
 Vue.use(VueI18n);
