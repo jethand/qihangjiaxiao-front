@@ -102,15 +102,19 @@ export default {
                     lsk3_hours: Lsk3_hours
                 });
             });
-            let [lsk2_number, lsk3_number, lsk2_hours, lsk3_hours] = [0,0,0,0];
+            let [lsk2_number, lsk3_number, lsk2_hours, lsk3_hours, total_number, total_hours] = [0,0,0,0,0,0];
             polumerData.forEach(item => {
                 lsk2_number += item.lsk2_number;
                 lsk3_number += item.lsk3_number;
+                total_number += item.lsk2_number;
+                total_number += item.lsk3_number;
                 lsk2_hours += item.lsk2_hours;
                 lsk3_hours += item.lsk3_hours;
+                total_hours += item.lsk2_hours;
+                total_hours += item.lsk3_hours;
             });
             logsTotaldData.push({
-                lsk2_number, lsk3_number, lsk2_hours, lsk3_hours
+                lsk2_number, lsk3_number, lsk2_hours, lsk3_hours, total_number, total_hours
             });
             this.logsTotaldData = logsTotaldData;
             this.logsComputedData = polumerData;

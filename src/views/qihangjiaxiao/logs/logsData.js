@@ -89,6 +89,14 @@ export default function(){
             {
                 title: '科目三练车时间总计',
                 key: 'lsk3_hours'
+            },
+            {
+                title: '总人数总计',
+                key: 'total_number'
+            },
+            {
+                title: '总小时总计',
+                key: 'total_hours'
             }
         ],
         logsTotaldData: []

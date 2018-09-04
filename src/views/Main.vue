@@ -152,8 +152,12 @@
                     this.$store.commit('logout', this);
                     this.$store.commit('clearOpenedSubmenu');
                     window.localStorage.removeItem('userInfo');
-                    this.$router.push({
-                        name: 'login'
+                    this.$http.post('/v1/user/user/logout').then(res => {
+                        if(res.data.errno === 0){
+                            this.$router.push({
+                                name: 'login'
+                            });
+                        }
                     });
                 }
             },
