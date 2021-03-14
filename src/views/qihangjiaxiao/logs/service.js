@@ -30,4 +30,17 @@ export default class Service{
             });
         });
     }
+    deleteLogsAction(logsID){
+        return new Promise(resolve =>{
+            this.$http.delete('/v1/logs/delete',{
+                params:{
+                    logsID
+                }
+            }).then(res =>{
+                if(res.data.errno === 0){
+                   resolve(res.data.data) 
+                }
+            })
+        })
+    }
 }

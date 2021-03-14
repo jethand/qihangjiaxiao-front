@@ -118,12 +118,21 @@ export default {
             });
             this.logsTotaldData = logsTotaldData;
             this.logsComputedData = polumerData;
+        },
+        async deleteLogsAction (id) {
+            const effectRow = await this.service.deleteLogsAction.bind(this)(id);
+            if (effectRow === 1) {
+                this.fetchLogsList();
+                this.$Message.success('删除数据成功')
+            }else {
+
+            }
         }
     },
     beforeMount(){
         this.service = new service();
         this.fetchLogsList();
         this.fetchSchoolsList();
-    }
+    },
 }
 </script>

@@ -42,6 +42,38 @@ export default function(){
             {
                 title: '创建时间',
                 key: 'create_time'
+            },{
+                title: '操作',
+                key: 'action',
+                render: (h, params) => {
+                    return h('div',[
+                        h('Button', {
+                            props: {
+                                type: 'warning',
+                                size: 'small'
+                            },
+                            on: {
+                                click: () => {
+                                    const {
+                                        row: {
+                                            id
+                                        }
+                                    } = params
+                                    this.$Modal.confirm({
+                                        title: '确定要删除么？',
+                                        content: `删除确认编号为【${id}】的小票么？删除后不可恢复，请谨慎操作！`,
+                                        onOk: () => {
+                                            this.deleteLogsAction(id)
+                                        }
+                                    });
+                                }
+                            }
+                        }, '删除')
+                    ]
+
+                    )
+                        
+                }
             }
         ],
         logsComputedData: [],
